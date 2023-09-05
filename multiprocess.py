@@ -2,21 +2,24 @@ import multiprocessing
 from measure import cpu_usage
 
 
-def factorial(n):
+# Simulation of a task
+def simulate(n):
     if n == 0:
         return 1
     else:
-        return n * factorial(n - 1)
+        return n * simulate(n - 1)
 
 
-def worker(num):
-    print(f"Factorial of {num}: {factorial(num)}")
+# Uses the simulation and prints the result
+def compute(num):
+    print(f"Recursion of {num}: {simulate(num)}")
 
 
+# Initiate multiprocessing on the simulation
 def multiProcess(n):
     processes = []
     for i in range(1, n + 1):
-        p = multiprocessing.Process(target=worker, args=(i,))
+        p = multiprocessing.Process(target=compute, args=(i,))
         processes.append(p)
         p.start()
 
