@@ -1,3 +1,4 @@
+
 import psutil
 import os
 import pandas as pd
@@ -19,7 +20,7 @@ cpu_stats = []
 
 
 def usage_history():
-    cpu_percent = psutil.disk_usage()
+    cpu_percent = psutil.cpu_percent()
     cpu_stats.append(cpu_percent)
 
 
